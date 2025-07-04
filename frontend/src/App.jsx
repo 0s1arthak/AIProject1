@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Loader from './Loader';
 
 function App() {
 
@@ -41,8 +42,10 @@ function App() {
         },
         body:JSON.stringify({name,idea,skill})
       });
+      console.log(promise);
       const data=await promise.json();
-      console.log(`The received data is ${data}`);
+      console.log(data);
+
 
     } catch (error) {
       console.log(`Error is ${error}`);
@@ -64,7 +67,7 @@ function App() {
 
   return (
     <>
-      <h1>AI Dev Guide: Your Personalized Project Mentor</h1>
+      <h1>AI Learning Guide: Your Personalized Project Mentor</h1>
       <form action="submit" className='form'
       onSubmit={onSubmitHandler}
       
