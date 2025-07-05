@@ -72,3 +72,24 @@
   min-height: 120px;
   resize: vertical;
 }
+
+
+.response-box {
+  text-align: left;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+  background: #fff;
+  color: #000; /* <-- Add this line */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+
+.response-line {
+  margin-bottom: 1rem;
+  padding-left: 10px;
+  border-left: 4px solid #4f46e5;
+  font-size: 1rem;
+  line-height: 1.8;
+}

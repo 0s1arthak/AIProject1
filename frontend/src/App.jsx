@@ -14,6 +14,9 @@ function App() {
   const [idea,setIdea]=useState('');
   const [skill,setSkill]=useState('');
 
+  const [loader,setLoader]=useState(false);
+  const [result,setResult]=useState(null);
+
 
 
   const onSubmitHandler=async(e)=>{
@@ -34,6 +37,8 @@ function App() {
     // Now making an api call
     // http://localhost:2000/
 
+    setLoader(true);
+
     try {
       const promise=await fetch('http://localhost:2000/getIdea',{
         method:'POST',
@@ -45,7 +50,9 @@ function App() {
       console.log(promise);
       const data=await promise.json();
       console.log(data);
-
+      setLoader(false);
+      setResult(data.response);
+      
 
     } catch (error) {
       console.log(`Error is ${error}`);
@@ -68,6 +75,30 @@ function App() {
   return (
     <>
       <h1>AI Learning Guide: Your Personalized Project Mentor</h1>
+
+
+      {loader && <Loader/>}
+
+      {!loader && result && (
+        <div className='result-page'>
+          <h2>Hey,{name} according to your need and your skill level, you could follow the following project guide for {idea},happy to help you and all the very best😊</h2>
+          <div className="response-box">
+            {result.split('\n').map((line, idx) => (
+              <p key={idx} className="response-line">{line.trim()}</p>
+            ))}
+          </div>
+          <button onClick={()=>{
+            setIdea('');
+            setName('');
+            setSkill('');
+            setResult(null)
+          }}>Back</button>
+        </div>
+
+      )}
+
+
+      {!loader && !result && (
       <form action="submit" className='form'
       onSubmit={onSubmitHandler}
       
@@ -95,6 +126,18 @@ function App() {
         <button>Submit</button>
 
       </form>
+      )}
+
+
+
+
+
+
+
+
+
+
+
     </>
   )
 }
