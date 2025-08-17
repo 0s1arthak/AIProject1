@@ -12,7 +12,7 @@ const app=express();
 
 
 app.use(cors({
-  origin: ["http://localhost:5173"], // your frontend domain
+  origin: ["http://localhost:5173","https://ai-project1-green.vercel.app"], // your frontend domain
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
@@ -29,7 +29,7 @@ app.get('/',(req,res)=>{
 
 })
 
-app.post('/api/getIdea',async(req,res)=>{
+app.post('/getIdea',async(req,res)=>{
     const {name,idea,skill}=req.body;
     const prompt = `Hey AI, based on this idea: "${idea}" and the user's skill level: "${skill}", suggest how they should proceed with this project. Keep it simple.`;
     console.log(`Info getting from frontend is ${name},${idea} and ${skill}`);
