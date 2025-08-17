@@ -12,7 +12,7 @@ const app=express();
 
 
 app.use(cors({
-  origin: ["https://ai-project1-green.vercel.app"], // your frontend domain
+  origin: ["http://localhost:5173"], // your frontend domain
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
