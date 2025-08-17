@@ -40,7 +40,7 @@ function App() {
     setLoader(true);
 
     try {
-      const promise=await fetch('http://localhost:2000/getIdea',{
+      const promise=await fetch('https://ai-project1-xoam.vercel.app/getIdea',{
         method:'POST',
         headers:{
           'Content-Type': 'application/json'
