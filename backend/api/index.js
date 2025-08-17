@@ -24,12 +24,12 @@ const openai=new OpenAI({
 })
 
 
-app.get('https://ai-project1-xoam.vercel.app/api/',(req,res)=>{
+app.get('/',(req,res)=>{
     res.send("You are on home api route")
 
 })
 
-app.post('https://ai-project1-xoam.vercel.app/api/getIdea',async(req,res)=>{
+app.post('/api/getIdea',async(req,res)=>{
     const {name,idea,skill}=req.body;
     const prompt = `Hey AI, based on this idea: "${idea}" and the user's skill level: "${skill}", suggest how they should proceed with this project. Keep it simple.`;
     console.log(`Info getting from frontend is ${name},${idea} and ${skill}`);
